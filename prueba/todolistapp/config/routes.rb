@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'completados/create'
   resources :tareas, only: :index do
     resources :completados, only: :create
   end
