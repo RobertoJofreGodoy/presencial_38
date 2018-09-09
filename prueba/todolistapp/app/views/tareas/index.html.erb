@@ -3,16 +3,21 @@
     <h2>Intenta completar todas estas Tareas este 18 de SeDtiembre!!!!</h2>
 
     <div class ="row">
-        <% @tareas.each do |tarea| %>
+        <% @tarea.each do |tarea| %>
             <div class="col-md-4">
                 <div class = "card">
                     <%= image_tag tarea.photo, size: '300x200',class: "card-img-top" %>
                 <div class = "body">
                     <h4><%=tarea.name%></h4>
                     <p><%=tarea.description%> </p>
-                    <%=link_to "completar", tarea_completados_path(tarea), class: 'btn btn-primary', method: :post %>
+                    <% if @listo.include?(tarea.id) %>
+                        <%=link_to "Desmarcar", tarea_completado_path(tarea,current_usuario), class: 'btn btn-danger', method: :put %>
+                    <% else %>
+                        <%=link_to "completar", tarea_completados_path(tarea), class: 'btn btn-primary', method: :post %>
+                    <% end %>
                     </div>
                 </div>
+            <div class ="w-100" style="margin-top:20px"></div>
             </div>
         <% end %>
     </div>
