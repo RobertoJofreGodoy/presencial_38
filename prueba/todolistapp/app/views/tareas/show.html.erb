@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-5">
+			<h1> Los Primeros 5</h1>
+			<% @ranking.each do |lista| %> 
+				<h2><%=lista.email %> <%=lista.updated_at %></h2>
+			<% end %>
+		</div>
+		<div class="col-md-3">
+			<h3>Todos los usuarios que la han completado</h3>
+			<% @usuarios.each do |user| %>
+			<p><%= user.email %></p>
+			<% end %>
+		</div>
+		<div class="col-md-4">
+			<h3> <%= @tarea.name %> </h3>	
+			<p> <%= @tarea.description %> </p>
+			<%= image_tag("#{@tarea.photo}", size: '300x200') %>
+			<%= link_to 'volver', root_path, :class => 'btn btn-success' %>
+		</div>
+	</div>
+	
+</div>

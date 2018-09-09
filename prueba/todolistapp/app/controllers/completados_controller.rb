@@ -13,7 +13,7 @@ class CompletadosController < ApplicationController
           redirect_to tareas_path, alert: 'La tarea no ha podido ser completada'
       end
     else
-  		if Completado.where(tarea: @tarea, usuario: current_usuario).update_all(listo: true)
+  		if Completado.where(tarea: @tarea, usuario: current_usuario).update(listo: true)
   			redirect_to root_path, notice:'La tarea ha sido completada'
   		  else
   			redirect_to root_path, alert:"La tarea no ha podido ser completada"	
@@ -24,7 +24,7 @@ class CompletadosController < ApplicationController
   def update
   	@tarea = Tarea.find(params[:tarea_id])
   	@usuario = current_usuario
-  	if Completado.where(tarea: @tarea, usuario: current_usuario).update_all(listo: false)
+  	if Completado.where(tarea: @tarea, usuario: current_usuario).update(listo: false)
   		redirect_to root_path, notice:'La tarea ha sido desmarcada'
   	else
   		redirect_to root_path, alert:"La tarea NO ha sido desmarcada"	
@@ -35,4 +35,3 @@ class CompletadosController < ApplicationController
   	params.require(:completado).permit(:usuario_id, :tarea_id, :listo)
   end
 end
-

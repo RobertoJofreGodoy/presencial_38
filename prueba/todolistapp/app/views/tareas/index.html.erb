@@ -15,6 +15,7 @@
                     <% else %>
                         <%=link_to "completar", tarea_completados_path(tarea), class: 'btn btn-primary', method: :post %>
                     <% end %>
+                    <%=link_to "Detalle", tarea_path(tarea), class: 'btn btn-primary' %>
                     </div>
                 </div>
             <div class ="w-100" style="margin-top:20px"></div>
